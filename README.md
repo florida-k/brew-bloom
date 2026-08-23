@@ -1,8 +1,8 @@
-# brew-bloom
+# Brew & Bloom
 A cozy productivity and wellness web application that brings together café culture, focused studying, and healthy habit tracking.
 
 ## About
-brew & bloom is designed to make studying and building healthy habits feel more enjoyable. Users can choose a café-style drink before starting a focus session, watch it brew, and receive a digital café receipt with drink information.
+Brew & Bloom is designed to make studying and building healthy habits feel more enjoyable. Users can choose a café-style drink before starting a focus session, watch it brew, and receive a digital café receipt with drink information.
 
 The application will also allow users to track wellness habits such as meals, hydration, caffeine intake, and mood.
 
