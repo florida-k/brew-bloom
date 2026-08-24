@@ -1,54 +1,16 @@
-# Brew & Bloom
-A cozy productivity and wellness web application that brings together café culture, focused studying, and healthy habit tracking.
+# React + Vite
 
-## About
-Brew & Bloom is designed to make studying and building healthy habits feel more enjoyable. Users can choose a café-style drink before starting a focus session, watch it brew, and receive a digital café receipt with drink information.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-The application will also allow users to track wellness habits such as meals, hydration, caffeine intake, and mood.
+Currently, two official plugins are available:
 
-## Features
-### Core Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-* Select a drink before a focus session
-* Interactive brewing animation
-* Pomodoro focus timer
-* Digital café receipt with drink information
-* Hydration tracking
-* Meal tracking
-* Caffeine tracking
-* Mood tracking
+## React Compiler
 
-### Future Features
-* AI-powered meal recognition
-* Personalized study insights
-* Personalized habit suggestions
-* Virtual pets and plants
-* Customizable virtual café
-* Achievements and unlockable decorations
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Technologies
-Technologies are currently being explored. Potential technologies include:
-React / Angular
-Python / FastAPI
-PostgreSQL
-OpenAI API
-Figma
-GitHub
+## Expanding the ESLint configuration
 
-## Getting Started
-
-Clone the repository:
-
-git clone <repository-url>
-cd <repository-name>
-
-Install dependencies:
-
-npm install
-
-Start the development server:
-
-npm run dev
-
-## Team
-TBD
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
