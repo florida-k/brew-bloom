@@ -1,4 +1,4 @@
-# Brew & Bloom
+ Brew & Bloom
 A cozy productivity and wellness web application that brings together café culture, focused studying, and healthy habit tracking.
 
 ## About
@@ -43,3 +43,4 @@ npm run dev
 
 ## Team
 TBD
+#
