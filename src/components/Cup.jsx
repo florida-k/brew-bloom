@@ -1,4 +1,4 @@
-/* brewing screen cup component */
+/* brewing screen cup component, this file handles the visual representation of the cup during brewing */
 
 export default function Cup({ color, progress }) {
   return (

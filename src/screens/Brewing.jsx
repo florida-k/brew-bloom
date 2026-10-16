@@ -11,7 +11,7 @@ function formatTime(totalSeconds) {
   return `${minutes}:${seconds}`
 }
 
-export default function Brewing({ drink, onBack }) {
+export default function Brewing({ drink, onBack, onFinish }) {
   const [secondsLeft, setSecondsLeft] = useState(FOCUS_SECONDS)
   const [running, setRunning] = useState(false)
   const finished = secondsLeft === 0
@@ -29,19 +29,20 @@ export default function Brewing({ drink, onBack }) {
 
   return (
     <main>
-
       <h1>{drink.name}</h1>
       <Cup color={drink.color} progress={progress} />
-
       <p className="timer">{formatTime(secondsLeft)}</p>
 
       {finished ? (
-        <p>Done! Your {drink.name.toLowerCase()} is ready.</p>
+        <button className="primary" onClick={() => onFinish(FOCUS_SECONDS)}>
+          Get my receipt
+        </button>
       ) : (
         <button className="primary" onClick={() => setRunning(!running)}>
           {running ? 'Pause' : 'Start focus'}
         </button>
       )}
+
       <button onClick={onBack}>Back</button>
     </main>
   )
