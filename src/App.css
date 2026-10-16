@@ -61,3 +61,32 @@ button {
   width: 100%;
   transition: height 1s linear;
 }
+
+.receipt {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto 24px;
+  padding: 24px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  font-family: ui-monospace, Menlo, monospace;
+}
+
+.receipt h2 {
+  margin: 0;
+}
+
+.receipt dl {
+  margin: 16px 0;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.receipt dt,
+.receipt dd {
+  margin: 0;
+}
