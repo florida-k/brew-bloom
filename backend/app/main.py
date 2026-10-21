@@ -1,12 +1,14 @@
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers import drinks
 
 app = FastAPI(
     title="Brew & Bloom API",
     description="Backend API for the Brew & Bloom productivity and wellness app",
     version="0.1.0"
 )
+
+app.include_router(drinks.router)
 
 # Allow the React frontend to communicate with the backend
 app.add_middleware(
