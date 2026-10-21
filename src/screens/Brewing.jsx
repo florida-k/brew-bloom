@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import Cup from '../components/Cup'
 
-const FOCUS_SECONDS = 25 * 60
+// Focus for 10 seconds for testing 
+const FOCUS_SECONDS = 1 * 10
 
 function formatTime(totalSeconds) {
   const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0')
