@@ -3,20 +3,19 @@
 import { useEffect, useState } from 'react'
 import Cup from '../components/Cup'
 
-// Focus for 10 seconds for testing 
-const FOCUS_SECONDS = 1 * 10
-
 function formatTime(totalSeconds) {
-  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0')
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0')
   const seconds = String(totalSeconds % 60).padStart(2, '0')
-  return `${minutes}:${seconds}`
+  return hours > 0 ? `${hours}:${minutes}:${seconds}` : `${minutes}:${seconds}`
 }
 
-export default function Brewing({ drink, onBack, onFinish }) {
-  const [secondsLeft, setSecondsLeft] = useState(FOCUS_SECONDS)
+export default function Brewing({ drink, minutes, onBack, onFinish }) {
+  const totalSeconds = minutes * 60
+  const [secondsLeft, setSecondsLeft] = useState(totalSeconds)
   const [running, setRunning] = useState(false)
   const finished = secondsLeft === 0
-  const progress = 1 - secondsLeft / FOCUS_SECONDS
+  const progress = 1 - secondsLeft / totalSeconds
 
   useEffect(() => {
     if (!running || finished) return
@@ -35,7 +34,7 @@ export default function Brewing({ drink, onBack, onFinish }) {
       <p className="timer">{formatTime(secondsLeft)}</p>
 
       {finished ? (
-        <button className="primary" onClick={() => onFinish(FOCUS_SECONDS)}>
+        <button className="primary" onClick={() => onFinish(totalSeconds)}>
           Get my receipt
         </button>
       ) : (
