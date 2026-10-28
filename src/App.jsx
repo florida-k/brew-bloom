@@ -3,6 +3,7 @@ import './App.css'
 import { DRINKS } from './data/drinks'
 import Brewing from './screens/Brewing'
 import Receipt from './screens/Receipt'
+import FocusTime from './screens/FocusTime'
 
 const drinkDetails = {
   latte: { emoji: '☕', tag: 'ESPRESSO BAR', ingredients: 'Oat milk · espresso · vanilla', mood: 'A cozy pick-me-up' },
@@ -15,13 +16,27 @@ function App() {
   const [selectedId, setSelectedId] = useState(DRINKS[1]?.id ?? DRINKS[0].id)
   const [focusSeconds, setFocusSeconds] = useState(0)
   const [finishedAt, setFinishedAt] = useState(null)
+  const [minutes, setMinutes] = useState(30)
   const drink = DRINKS.find((d) => d.id === selectedId) ?? DRINKS[0]
 
   if (screen === 'receipt') {
     return <Receipt drink={drink} focusSeconds={focusSeconds} finishedAt={finishedAt} onAgain={() => setScreen('pick')} />
   }
+
+  if (screen === 'focus') {
+  return (
+    <FocusTime
+      drink={drink}
+      minutes={minutes}
+      onChange={setMinutes}
+      onNext={() => setScreen('brew')}
+      onBack={() => setScreen('pick')}
+    />
+  )
+}
+
   if (screen === 'brew') {
-    return <Brewing drink={drink} onBack={() => setScreen('pick')} onFinish={(seconds) => {
+    return <Brewing drink={drink} minutes={minutes} onBack={() => setScreen('pick')} onFinish={(seconds) => {
       setFocusSeconds(seconds)
       setFinishedAt(new Date())
       setScreen('receipt')
@@ -49,7 +64,7 @@ function App() {
             </button>
           })}
         </div>
-        <div className="order-summary"><div className="order-left"><span className="order-icon">✿</span><div><span className="order-label">YOUR PICK</span><strong>{drink.name} <span className="order-note">· {drinkDetails[drink.id]?.mood ?? 'Ready to brew'}</span></strong></div></div><button className="order-button" onClick={() => setScreen('brew')}>Let's brew <span aria-hidden="true">→</span></button></div>
+        <div className="order-summary"><div className="order-left"><span className="order-icon">✿</span><div><span className="order-label">YOUR PICK</span><strong>{drink.name} <span className="order-note">· {drinkDetails[drink.id]?.mood ?? 'Ready to brew'}</span></strong></div></div><button className="order-button" onClick={() => setScreen('focus')}>Let's brew <span aria-hidden="true">→</span></button></div>
         <div className="picker-footer"><span>✿ a little ritual for a brighter day</span><span>BREW SLOWLY. BLOOM DAILY.</span></div>
       </main>
     </div>
