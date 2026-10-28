@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import Cup from '../components/Cup'
 
-const FOCUS_SECONDS = 25 * 60
+// Temporary demo duration. Restore to 25 * 60 for production.
+const FOCUS_SECONDS = 5
 
 function formatTime(totalSeconds) {
   const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, '0')
