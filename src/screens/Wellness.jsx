@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react'
 import '../App.css'
+import '../widgets/garden/garden.css'
+import { PlantWidget, TaskBoard, useTasks } from '../widgets/garden'
 
 const STORAGE_KEY = 'brew-bloom-wellness-v1'
 const WATER_GOAL = 8
@@ -32,6 +34,8 @@ function loadSavedDay() {
 
 export default function Wellness({ onBack }) {
   const [day, setDay] = useState(loadSavedDay)
+  const { tasks, completed, total, addTask, toggleTask, removeTask, clearCompleted } = useTasks()
+  const bloomed = total > 0 && completed === total
 
   useEffect(() => {
     try {
@@ -114,6 +118,40 @@ export default function Wellness({ onBack }) {
           <span className="heading-sparkle" aria-hidden="true">
             ✿
           </span>
+        </section>
+
+        {/* Keysie's task garden, integrated into Princess's wellness dashboard. */}
+        <section className="wellness-widget garden-card" aria-label="Task garden">
+          <div className="wellness-widget-top">
+            <span className="wellness-widget-icon" aria-hidden="true">🌱</span>
+            <div>
+              <div className="eyebrow">GROW YOUR GARDEN</div>
+              <h2>Task Garden</h2>
+            </div>
+            <span className="wellness-counter">{completed} / {total} DONE</span>
+          </div>
+          <div className="garden-body">
+            <div className="garden-plant-col">
+              <PlantWidget completed={completed} total={total} />
+              <p className="garden-caption">
+                {total === 0
+                  ? 'Add a task to plant your seed.'
+                  : bloomed
+                    ? <strong>Full bloom! ✿</strong>
+                    : `${total - completed} more to bloom`}
+              </p>
+            </div>
+            <TaskBoard
+              tasks={tasks}
+              onAdd={addTask}
+              onToggle={toggleTask}
+              onRemove={removeTask}
+              onClearCompleted={clearCompleted}
+            />
+          </div>
+          <div className="wellness-widget-footer">
+            <span className="wellness-save-note">✿ Every task is one step of growth.</span>
+          </div>
         </section>
 
         <section className="wellness-widget">
